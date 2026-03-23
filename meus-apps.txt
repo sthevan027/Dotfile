@@ -1,0 +1,36 @@
+# Meus apps — Zorin (OBS, Discord, Cursor, VS Code, Postman, Bruno, etc.)
+# Rode: ./scripts/instalar-apps.sh
+
+=== APT ===
+btop
+cursor
+feh
+flatpak
+gh
+git
+gnome-tweaks
+gnome-terminal
+neofetch
+network-manager-gnome
+nodejs
+openjdk-17-jdk
+python3
+python3-pip
+rofi
+fonts-jetbrains-mono
+
+=== FLATPAK ===
+com.discordapp.Discord
+com.getpostman.Postman
+com.mattjakeman.ExtensionManager
+com.obsproject.Studio
+com.usebruno.Bruno
+com.visualstudio.code
+dev.zed.Zed
+io.dbeaver.DBeaverCommunity
+org.flameshot.Flameshot
+org.mozilla.firefox
+org.sqlitebrowser.sqlitebrowser
+org.videolan.VLC
+
+=== SNAP ===
