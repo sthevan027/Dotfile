@@ -54,6 +54,16 @@ dotfiles/
 - `config-snapshot.md` — estado atual
 - `CHECKLIST.md` — o que fazer antes de formatar + setup no PC novo
 
+## 🔄 Atualizar (puxar do GitHub)
+
+```bash
+./scripts/pull-e-aplicar.sh
+```
+
+Puxa as alterações e reaplica a configuração.
+
+---
+
 ## 🚀 Subir no GitHub (antes de formatar)
 
 ```bash

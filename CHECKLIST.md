@@ -39,6 +39,15 @@ cd ~/dotfiles
 # 3. Logout e login
 ```
 
+## Atualizar depois (puxar alterações)
+
+```bash
+cd ~/dotfiles
+./scripts/pull-e-aplicar.sh
+```
+
+Puxa do GitHub e reaplica a config automaticamente.
+
 ---
 
 ## O que pode faltar (configure depois)
