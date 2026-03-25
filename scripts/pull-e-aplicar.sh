@@ -14,6 +14,10 @@ echo ">>> Reaplicando configuração..."
 ./scripts/restaurar-config.sh
 
 echo ""
+echo ">>> Shell (opcional)..."
+echo "  ./scripts/aplicar-shell.sh"
+
+echo ""
 echo "✓ Atualizado!"
 echo ""
 echo "Para aplicar tudo de novo (temas, apps, etc):"

@@ -4,6 +4,8 @@ Configuração atual do meu Linux (Zorin OS): cursor Windows 11 black, botões e
 
 **PC novo?** Clone e rode: `./scripts/setup-novo-pc.sh`
 
+**Terminal (zsh + p10k) em qualquer máquina:** `./scripts/aplicar-shell.sh`
+
 ---
 
 ## ✨ O que está ativo
@@ -14,6 +16,21 @@ Configuração atual do meu Linux (Zorin OS): cursor Windows 11 black, botões e
 | **Botões de janela** | Estilo macOS (vermelho, amarelo, verde à esquerda) |
 | **Ícones** | WhiteSur — estilo macOS (squircle) |
 | **Barra superior** | Zorin Taskbar — apps abertos visíveis |
+| **Shell** | zsh, Oh My Zsh, Powerlevel10k (ver `shell/`) |
+
+---
+
+## 🖲️ Terminal (zsh)
+
+Configuração versionada em `shell/.zshrc` e `shell/.p10k.zsh`. O script instala Oh My Zsh, o tema Powerlevel10k e os plugins `zsh-autosuggestions` e `zsh-syntax-highlighting`, depois copia os arquivos para o seu home (com backup `.bak.*` se já existirem).
+
+```bash
+cd dotfiles
+./scripts/aplicar-shell.sh
+exec zsh
+```
+
+Em máquina nova sem zsh como padrão: `chsh -s "$(command -v zsh)"` (faça logout/login depois).
 
 ---
 
@@ -35,7 +52,11 @@ Se os botões Mac não aparecerem:
 
 ```
 dotfiles/
+├── shell/
+│   ├── .zshrc                 # zsh (fonte para ~/ .zshrc)
+│   └── .p10k.zsh              # Powerlevel10k
 ├── scripts/
+│   ├── aplicar-shell.sh       # zsh + OMZ + p10k + plugins (qualquer máquina)
 │   ├── zorin-complete.sh      # Tudo: taskbar + cursor + botões Mac
 │   ├── zorin-aero-macos.sh    # Só cursor + botões Mac
 │   ├── fix-botoes-macos.sh    # Corrigir botões se não aplicar
@@ -51,7 +72,8 @@ dotfiles/
 
 ## 📸 Configuração salva
 
-- `config-snapshot.md` — estado atual
+- `config-snapshot.md` — estado atual (desktop Zorin)
+- `shell/` — terminal zsh + p10k
 - `CHECKLIST.md` — o que fazer antes de formatar + setup no PC novo
 
 ## 🔄 Atualizar (puxar do GitHub)

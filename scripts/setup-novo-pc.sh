@@ -31,6 +31,11 @@ echo ">>> 4. Restaurando configurações..."
 ./scripts/restaurar-config.sh
 echo ""
 
+# 5. Shell (zsh + Powerlevel10k)
+echo ">>> 5. Aplicando shell (zsh + p10k)..."
+./scripts/aplicar-shell.sh
+echo ""
+
 echo "=============================================="
 echo "  ✅ Setup concluído!"
 echo "=============================================="
