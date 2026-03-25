@@ -1,25 +1,30 @@
-#!/bin/bash
-# Puxa as últimas alterações do GitHub e reaplica a configuração
-# Rode: ./scripts/pull-e-aplicar.sh
+#!/usr/bin/env bash
+# git pull + reaplica gsettings (e opcionalmente o shell).
+# Uso: ./scripts/pull-e-aplicar.sh [--shell]
 
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR/.."
 
-echo ">>> Puxando alterações do GitHub..."
-git pull origin main 2>/dev/null || git pull 2>/dev/null || echo "  (não é um repositório git ou sem remote)"
+WITH_SHELL=false
+for a in "$@"; do
+  [[ "$a" == "--shell" ]] && WITH_SHELL=true
+done
+
+echo ">>> git pull..."
+git pull origin main 2>/dev/null || git pull 2>/dev/null || echo "  (sem remote ou não é git)"
 
 echo ""
-echo ">>> Reaplicando configuração..."
+echo ">>> Aparência (gsettings)..."
 ./scripts/restaurar-config.sh
 
-echo ""
-echo ">>> Shell (opcional)..."
-echo "  ./scripts/aplicar-shell.sh"
+if $WITH_SHELL; then
+  echo ""
+  echo ">>> Shell..."
+  ./scripts/aplicar-shell.sh
+fi
 
 echo ""
-echo "✓ Atualizado!"
-echo ""
-echo "Para aplicar tudo de novo (temas, apps, etc):"
-echo "  ./scripts/setup-novo-pc.sh"
+echo "✓ Sincronizado."
+$WITH_SHELL || echo "  Shell: ./scripts/pull-e-aplicar.sh --shell  ou  ./scripts/aplicar-shell.sh"
 echo ""

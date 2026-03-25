@@ -19,10 +19,10 @@ git push -u origin main
 - [ ] **Bookmarks do navegador** — Firefox sincroniza; ou exporte
 - [ ] **Projetos/código** — push no GitHub/GitLab antes
 
-### 3. Não precisa salvar (já está nos dotfiles)
-- ✓ Tema, cursor, ícones, botões
-- ✓ Lista de apps
-- ✓ Scripts de instalação
+### 3. Já está no repositório
+- Tema, cursor, ícones, botões (scripts + `restaurar-config.sh`)
+- Lista `meus-apps.txt` e `scripts/apps.sh`
+- Shell em `shell/`
 
 ---
 

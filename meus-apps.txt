@@ -1,5 +1,5 @@
 # Meus apps — Zorin (OBS, Discord, Cursor, VS Code, Postman, Bruno, etc.)
-# Rode: ./scripts/instalar-apps.sh
+# Gerar lista: ./scripts/apps.sh capturar  |  Instalar: ./scripts/apps.sh instalar
 
 === APT ===
 btop

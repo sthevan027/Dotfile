@@ -17,8 +17,8 @@ sudo apt update && sudo apt upgrade -y
 echo ""
 
 # 2. Instalar apps
-echo ">>> 2. Instalando apps (OBS, Discord, Cursor, etc.)..."
-./scripts/instalar-apps.sh
+echo ">>> 2. Instalando apps (lista meus-apps.txt)..."
+./scripts/apps.sh instalar
 echo ""
 
 # 3. Aparência (cursor, botões, ícones, taskbar)

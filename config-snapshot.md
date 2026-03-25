@@ -1,42 +1,16 @@
-# Snapshot da configuração — Zorin
+# Snapshot — visual Zorin
 
-Salvo em: 23/03/2026
-
-## Setup atual
+Atualizado: março/2026
 
 | Item | Valor |
 |------|-------|
-| **Tema GTK** | WhiteSur-Dark |
-| **Tema janelas** | WhiteSur-Dark |
-| **Ícones** | WhiteSur |
-| **Cursor** | Vision-Black (Windows 11 black) |
-| **Botões** | close,minimize,maximize: (à esquerda, estilo Mac) |
-| **Barra** | Zorin Taskbar |
+| Tema GTK / janelas | WhiteSur-Dark |
+| Ícones | WhiteSur |
+| Cursor | Vision-Black |
+| Botões | `close,minimize,maximize:` (à esquerda) |
+| Barra | Zorin Taskbar (Extension Manager) |
 
-## Aplicar em sistema novo
+**Aplicar do zero:** `./scripts/zorin-complete.sh`  
+**Só reaplicar o que já está instalado:** `./scripts/restaurar-config.sh`
 
-```bash
-cd dotfiles
-./scripts/zorin-complete.sh
-```
-
-## Scripts
-
-| Script | Função |
-|--------|--------|
-| `zorin-complete.sh` | Setup completo |
-| `restaurar-config.sh` | Aplicar config salva (após instalar temas) |
-| `zorin-aero-macos.sh` | Cursor + botões Mac |
-| `icones-macos.sh` | Só ícones WhiteSur |
-| `fix-botoes-macos.sh` | Corrigir botões |
-
-## Extensões GNOME
-
-- **Zorin Taskbar** — apps abertos na barra
-
-## Dependências
-
-- WhiteSur GTK theme
-- WhiteSur Icon theme
-- Vision Cursor (ou DMZ-Black)
-- Extension Manager (para Zorin Taskbar)
+Dependências: tema + ícones WhiteSur, cursor Vision (o script `zorin-complete.sh` instala o que faltar).
