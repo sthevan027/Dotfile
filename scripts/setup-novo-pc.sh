@@ -22,7 +22,7 @@ echo ">>> 2. Instalando apps (lista meus-apps.txt)..."
 echo ""
 
 # 3. Aparência (cursor, botões, ícones, taskbar)
-echo ">>> 3. Aplicando aparência (cursor, botões Mac, ícones)..."
+echo ">>> 3. Aplicando aparência (cursor, botões à direita, ícones)..."
 ./scripts/zorin-complete.sh
 echo ""
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Zorin: Aplicativos na barra + Cursor Windows 11 Black + Botões macOS
+# Zorin: Aplicativos na barra + Cursor Windows 11 Black + botões padrão (direita)
 # Rode: ./scripts/zorin-complete.sh
 
 set -e
@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR/.."
 
 echo "=============================================="
-echo "  Zorin: Barra + Cursor + Botões + Ícones Mac"
+echo "  Zorin: Barra + Cursor + botões à direita + ícones"
 echo "=============================================="
 echo ""
 
@@ -85,8 +85,8 @@ echo "     https://www.deviantart.com/twipeep/art/Windows-11-cursor-black-versio
 echo "     Extraia em ~/.local/share/icons/ e aplique nas configurações)"
 echo ""
 
-# --- 3. BOTÕES ESTILO MACOS ---
-echo ">>> 3. Botões estilo macOS (vermelho, amarelo, verde)"
+# --- 3. BOTÕES À DIREITA (PADRÃO WINDOWS / ZORIN) ---
+echo ">>> 3. Botões da janela à direita (minimizar, maximizar, fechar)"
 echo ""
 
 THEME_DIRS="/usr/share/themes $HOME/.themes $HOME/.local/share/themes"
@@ -96,7 +96,7 @@ for d in $THEME_DIRS; do
 done
 
 if [ -z "$WS_INSTALLED" ]; then
-    echo "    Instalando WhiteSur (tema com botões Mac)..."
+    echo "    Instalando WhiteSur (tema GTK)..."
     TMP_DIR=$(mktemp -d)
     cd "$TMP_DIR"
     git clone --depth 1 https://github.com/vinceliuice/WhiteSur-gtk-theme.git
@@ -110,8 +110,8 @@ else
     echo "    WhiteSur já instalado."
 fi
 
-# Botões à esquerda (estilo Mac)
-gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+# Botões à direita (ordem: minimizar, maximizar, fechar)
+gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
 # Aplicar tema GTK e janelas
 gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark"
@@ -120,9 +120,9 @@ gsettings set org.gnome.desktop.wm.preferences theme "WhiteSur-Dark"
 # Zorin pode usar schema próprio — forçar via dconf
 dconf write /org/gnome/desktop/interface/gtk-theme "'WhiteSur-Dark'" 2>/dev/null || true
 dconf write /org/gnome/desktop/wm/preferences/theme "'WhiteSur-Dark'" 2>/dev/null || true
-dconf write /org/gnome/desktop/wm/preferences/button-layout "'close,minimize,maximize:'" 2>/dev/null || true
+dconf write /org/gnome/desktop/wm/preferences/button-layout "':minimize,maximize,close'" 2>/dev/null || true
 
-echo "    ✓ Botões macOS aplicados via gsettings!"
+echo "    ✓ Botões à direita aplicados via gsettings!"
 echo ""
 echo "    Se NÃO aparecer, aplique manualmente:"
 echo "    1. Abra 'Aparência' (ou Configurações > Aparência)"

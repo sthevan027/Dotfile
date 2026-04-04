@@ -1,6 +1,6 @@
 # Meu setup Zorin
 
-Cursor Windows 11 black (Vision-Black), botões estilo macOS, ícones WhiteSur, Zorin Taskbar, shell zsh + Powerlevel10k.
+Cursor Windows 11 black (Vision-Black), botões da janela à direita (padrão Windows), ícones WhiteSur, Zorin Taskbar, shell zsh + Powerlevel10k.
 
 | Situação | Comando |
 |----------|---------|
@@ -40,8 +40,6 @@ dotfiles/
 │   ├── apps.sh               # capturar | instalar (meus-apps.txt)
 │   └── pull-e-aplicar.sh     # git pull + restaurar-config [--shell]
 ├── meus-apps.txt
-├── config-snapshot.md        # Resumo do visual atual
-├── CHECKLIST.md              # Antes de formatar / depois do install
 └── README.md
 ```
 

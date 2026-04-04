@@ -16,7 +16,7 @@ capturar() {
     echo "# Edite e rode: ./scripts/apps.sh instalar"
     echo ""
     echo "=== APT ==="
-    apt-mark showmanual 2>/dev/null | sort | grep -vE '^(lib|linux-|grub|gnome-|gir1\.|fonts-|ca-|debconf|dpkg|adduser|base-|bash|cron|dbus|e2fsprogs|coreutils|findutils|grep|gzip|init|iproute2|kbd|kmod|less|locales)' | head -80
+    apt-mark showmanual 2>/dev/null | sort | grep -vE '^(lib|linux-|grub|gnome-|gir1\.|fonts-|ca-|debconf|dpkg|adduser|base-|bash|cron|dbus|e2fsprogs|coreutils|findutils|grep|gzip|init|iproute2|kbd|kmod|less|locales)'
     echo ""
     echo "=== FLATPAK ==="
     flatpak list --app --columns=application 2>/dev/null | tail -n +1
