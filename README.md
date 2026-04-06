@@ -1,12 +1,13 @@
-# Meu setup Zorin
+# Dotfiles — GNOME + shell
 
-Cursor Windows 11 black (Vision-Black), botões da janela à direita (padrão Windows), ícones WhiteSur, Zorin Taskbar, shell zsh + Powerlevel10k.
+Cursor Windows 11 black (Vision-Black), botões da janela à direita, ícones WhiteSur, extensão de barra (Zorin Taskbar no Zorin; em outras distros use Extension Manager), shell zsh + Powerlevel10k.
 
 | Situação | Comando |
 |----------|---------|
-| **PC novo (Zorin)** | `./scripts/setup-novo-pc.sh` |
+| **PC novo (GNOME)** | `./scripts/setup-novo-pc.sh` |
 | **Só terminal (qualquer Linux/macOS)** | `./scripts/aplicar-shell.sh` |
-| **Só tema / barra / cursor** | `./scripts/zorin-complete.sh` |
+| **Só tema / barra / cursor** | `./scripts/gnome-complete.sh` |
+| **Atalhos (workspaces Super+1..9, etc.)** | `./scripts/gnome-shortcuts.sh` |
 | **Reaplicar cores/tema sem reinstalar nada** | `./scripts/restaurar-config.sh` |
 | **Puxar do Git e reaplicar** | `./scripts/pull-e-aplicar.sh` (use `--shell` para zsh também) |
 | **Lista de apps** | `./scripts/apps.sh capturar` → editar `meus-apps.txt` → `./scripts/apps.sh instalar` |
@@ -33,9 +34,10 @@ Shell padrão: `chsh -s "$(command -v zsh)"` (logout/login).
 dotfiles/
 ├── shell/                    # .zshrc + .p10k.zsh (fonte)
 ├── scripts/
-│   ├── setup-novo-pc.sh      # apt upgrade + apps + Zorin + gsettings + shell
-│   ├── zorin-complete.sh     # Taskbar + Vision cursor + WhiteSur GTK + ícones
-│   ├── restaurar-config.sh   # Só gsettings/dconf (rápido)
+│   ├── setup-novo-pc.sh      # atualiza sistema + apps + GNOME + gsettings + shell
+│   ├── gnome-complete.sh     # extensões de barra + cursor + WhiteSur GTK + ícones
+│   ├── gnome-shortcuts.sh    # atalhos gsettings (workspaces, apps)
+│   ├── restaurar-config.sh   # só gsettings/dconf (rápido)
 │   ├── aplicar-shell.sh      # zsh em qualquer máquina
 │   ├── apps.sh               # capturar | instalar (meus-apps.txt)
 │   └── pull-e-aplicar.sh     # git pull + restaurar-config [--shell]

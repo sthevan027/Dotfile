@@ -153,6 +153,61 @@ alias dcd="docker-compose down"
 # Limpar sistema
 alias cls="clear"
 
+# Workspaces e janelas
+workspace() {
+  if [[ -z "$1" || ! "$1" =~ ^[0-9]+$ ]]; then
+    echo "Uso: workspace <numero>"
+    return 1
+  fi
+  local idx=$(( $1 - 1 ))
+  if command -v wmctrl >/dev/null 2>&1; then
+    wmctrl -s "$idx"
+  elif command -v gdbus >/dev/null 2>&1; then
+    gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval "global.workspace_manager.activate_workspace(${idx}, global.get_current_time())"
+  else
+    echo "Instale wmctrl ou use gdbus para trocar workspaces por número."
+    return 1
+  fi
+}
+alias ws=workspace
+alias t=workspace
+for i in {1..9}; do
+  eval "alias ws$i='workspace $i'"
+  eval "alias t$i='workspace $i'"
+done
+
+openapp() {
+  if [[ $# -eq 0 ]]; then
+    echo "Uso: openapp <comando> [args...]"
+    return 1
+  fi
+  nohup "$@" >/dev/null 2>&1 &
+  disown
+}
+alias abre=openapp
+
+closeapp() {
+  if [[ $# -eq 0 ]]; then
+    echo "Uso: closeapp <processo>"
+    return 1
+  fi
+  pkill -f "$*"
+}
+alias fecha=closeapp
+
+closewin() {
+  if [[ $# -eq 0 ]]; then
+    echo "Uso: closewin <titulo-da-janela>"
+    return 1
+  fi
+  if command -v wmctrl >/dev/null 2>&1; then
+    wmctrl -c "$*"
+  else
+    echo "Instale wmctrl para fechar janelas por título."
+    return 1
+  fi
+}
+
 # pnpm
 export PNPM_HOME="${PNPM_HOME:-$HOME/.local/share/pnpm}"
 case ":$PATH:" in

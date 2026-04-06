@@ -1,0 +1,9 @@
+{
+  "name": "Rótulo no canto",
+  "description": "Mostra o teu nome (ou texto) e ícone no canto esquerdo da barra superior.",
+  "uuid": "user-corner-label@dotfile.local",
+  "settings-schema": "org.gnome.shell.extensions.user-corner-label",
+  "shell-version": ["49", "48"],
+  "url": "",
+  "version": 1
+}

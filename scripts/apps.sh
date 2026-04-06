@@ -15,8 +15,16 @@ capturar() {
     echo "# Apps instalados — $(date '+%Y-%m-%d')"
     echo "# Edite e rode: ./scripts/apps.sh instalar"
     echo ""
-    echo "=== APT ==="
-    apt-mark showmanual 2>/dev/null | sort | grep -vE '^(lib|linux-|grub|gnome-|gir1\.|fonts-|ca-|debconf|dpkg|adduser|base-|bash|cron|dbus|e2fsprogs|coreutils|findutils|grep|gzip|init|iproute2|kbd|kmod|less|locales)'
+    
+    # Detectar gerenciador de pacotes
+    if command -v apt-mark &>/dev/null; then
+      echo "=== APT ==="
+      apt-mark showmanual 2>/dev/null | sort | grep -vE '^(lib|linux-|grub|gnome-|gir1\.|fonts-|ca-|debconf|dpkg|adduser|base-|bash|cron|dbus|e2fsprogs|coreutils|findutils|grep|gzip|init|iproute2|kbd|kmod|less|locales)'
+    elif command -v dnf &>/dev/null; then
+      echo "=== DNF ==="
+      dnf repoquery --userinstalled -q 2>/dev/null | sort
+    fi
+    
     echo ""
     echo "=== FLATPAK ==="
     flatpak list --app --columns=application 2>/dev/null | tail -n +1
@@ -33,10 +41,18 @@ instalar() {
   echo "Instalando apps de $APPS_FILE..."
   echo ""
 
+  # Instalar via APT (Debian/Ubuntu)
   apt_pkgs=$(awk '/^=== APT ===$/{f=1;next} /^=== /{f=0} f&&!/^#/&&!/^$/' "$APPS_FILE")
-  if [ -n "$apt_pkgs" ]; then
+  if [ -n "$apt_pkgs" ] && command -v apt &>/dev/null; then
     echo ">>> Apt..."
     echo "$apt_pkgs" | xargs sudo apt install -y 2>/dev/null || true
+  fi
+
+  # Instalar via DNF (Fedora/RHEL/CentOS)
+  dnf_pkgs=$(awk '/^=== DNF ===$/{f=1;next} /^=== /{f=0} f&&!/^#/&&!/^$/' "$APPS_FILE")
+  if [ -n "$dnf_pkgs" ] && command -v dnf &>/dev/null; then
+    echo ">>> DNF..."
+    echo "$dnf_pkgs" | xargs sudo dnf install -y 2>/dev/null || true
   fi
 
   flatpak_ids=$(awk '/^=== FLATPAK ===$/{f=1;next} /^=== /{f=0} f&&!/^#/&&!/^$/' "$APPS_FILE")

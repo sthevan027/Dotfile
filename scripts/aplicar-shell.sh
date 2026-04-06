@@ -58,13 +58,13 @@ if ! have git || ! have curl; then
 fi
 
 # Opcionais (neofetch/jq usados pelo .zshrc)
-if have apt-get && ! have jq; then
-  sudo apt-get install -y jq 2>/dev/null || true
-fi
-if have apt-get && ! have neofetch; then
-  sudo apt-get install -y neofetch 2>/dev/null || true
-fi
-if have brew; then
+if have apt-get; then
+  ! have jq && sudo apt-get install -y jq 2>/dev/null || true
+  ! have neofetch && sudo apt-get install -y neofetch 2>/dev/null || true
+elif have dnf; then
+  ! have jq && sudo dnf install -y jq 2>/dev/null || true
+  ! have neofetch && sudo dnf install -y neofetch 2>/dev/null || true
+elif have brew; then
   have jq || brew install jq 2>/dev/null || true
   have neofetch || brew install neofetch 2>/dev/null || true
 fi

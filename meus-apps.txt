@@ -1,141 +1,79 @@
-# Apps instalados — 2026-04-03
+# Apps — GNOME (qualquer distro)
 # Edite e rode: ./scripts/apps.sh instalar
+#
+# • === APT ===     → Debian, Ubuntu, Pop!_OS, Zorin, Linux Mint (deb), etc.
+# • === DNF ===     → Fedora, RHEL com dnf
+# • === FLATPAK === → qualquer distro com Flatpak (recomendado quando o nome bate)
+# • === SNAP ===    → opcional
+#
+# Pacotes de terceiros (Chrome, Brave, Cursor, Warp, Docker…) exigem o repositório
+# ou .deb/.rpm oficiais; falhas no instalar são esperadas até configurar a fonte.
 
 === APT ===
-apt
-apt-transport-https
-apt-utils
-brave-keyring
-bsdutils
 btop
-cmdtest
-console-setup
-console-setup-linux
-containerd.io
 curl
-cursor
-dash
-debianutils
-dhcpcd-base
-diffutils
-distro-info
-distro-info-data
-dmsetup
+feh
+flatpak
+gh
+git
+gnupg
+kitty
+neofetch
+network-manager-gnome
+nodejs
+openjdk-17-jdk
+python3-pip
+python3-venv
+rofi
+sassc
+wget
+zsh
+# Docker (Ubuntu): https://docs.docker.com/engine/install/ubuntu/
+containerd.io
 docker-buildx-plugin
 docker-ce
 docker-ce-cli
 docker-compose-plugin
-efibootmgr
-eject
+# Navegadores / IDEs (ajuste ou remova se não usar o repositório correspondente)
+brave-browser
+brave-keyring
+google-chrome-stable
+# cursor
+# ngrok
+# warp-terminal
+
+# --- Somente Zorin OS (descomente se for esse sistema) ---
+# zorin-os-desktop
+# zorin-os-keyring
+# zorin-os-minimal
+# zorin-os-restricted-addons
+# zorin-os-standard
+# zorin-os-www-browser
+
+=== DNF ===
+btop
+curl
 feh
 flatpak
-gcc-14-base
 gh
 git
-gnupg
-google-chrome-stable
-gpgv
-hostname
-hunspell-en-us
-hyphen-en-us
-iputils-ping
-iso-codes
-keyboard-configuration
+gnupg2
+java-17-openjdk-devel
 kitty
-krb5-locales
-language-pack-en
-language-pack-gnome-en
-login
-logrotate
-logsave
-lsb-release
-lvm2
-mawk
-media-types
-mokutil
-mount
-mythes-en-us
-ncurses-base
-ncurses-bin
 neofetch
-netbase
-netcat-openbsd
-netplan-generator
-netplan.io
-networkd-dispatcher
-network-manager-gnome
-ngrok
+NetworkManager-tui
 nodejs
-ntfs-3g
-openjdk-17-jdk
-openssl
-passwd
-perl-base
-poppler-data
-procps
-python3
-python3.12
-python3.12-minimal
-python3-apt
-python3-cffi-backend
-python3-dbus
-python3-gi
-python3-markdown-it
-python3-mdurl
-python3-minimal
-python3-netifaces
-python3-netplan
+npm
 python3-pip
-python3-pkg-resources
-python3-pygments
-python3-rich
-python3-typing-extensions
-python3-yaml
-python-apt-common
-readline-common
 rofi
-rsyslog
 sassc
-sed
-sensible-utils
-shared-mime-info
-shim-signed
-snapd
-software-properties-common
-sudo
-systemd
-systemd-dev
-systemd-hwe-hwdb
-systemd-resolved
-systemd-sysv
-systemd-timesyncd
-sysvinit-utils
-tar
-tzdata
-ubuntu-keyring
-ucf
-udev
-util-linux
-vim-common
-vim-tiny
-wamerican
-warp-terminal
-wbritish
 wget
-whiptail
-wpasupplicant
-xdg-user-dirs
-xkb-data
-xserver-xorg
-xxd
-zlib1g
-zorin-os-desktop
-zorin-os-keyring
-zorin-os-minimal
-zorin-os-restricted-addons
-zorin-os-standard
-zorin-os-www-browser
 zsh
+# Docker (Fedora): https://docs.docker.com/engine/install/fedora/
+# docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+podman-docker
+# google-chrome-stable  # após repo Google
+# brave-browser         # após repo Brave
 
 === FLATPAK ===
 com.discordapp.Discord

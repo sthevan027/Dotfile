@@ -1,13 +1,13 @@
 #!/bin/bash
-# Zorin: Aplicativos na barra + Cursor Windows 11 Black + botões padrão (direita)
-# Rode: ./scripts/zorin-complete.sh
+# GNOME (qualquer distro): barra/extensões + cursor + botões à direita + tema GTK/ícones
+# Rode: ./scripts/gnome-complete.sh
 
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR/.."
 
 echo "=============================================="
-echo "  Zorin: Barra + Cursor + botões à direita + ícones"
+echo "  GNOME: Barra + Cursor + botões à direita + ícones"
 echo "=============================================="
 echo ""
 
@@ -26,7 +26,11 @@ elif [ -d "/usr/share/gnome-shell/extensions/zorin-taskbar@zorinos.com" ]; then
     echo "    ✓ Taskbar ativada!"
 else
     echo "    Instalando Extension Manager..."
-    sudo apt install -y extension-manager 2>/dev/null || sudo apt install -y gnome-shell-extension-manager 2>/dev/null || sudo apt install -y chrome-gnome-shell 2>/dev/null || true
+    if command -v apt &>/dev/null; then
+      sudo apt install -y extension-manager 2>/dev/null || sudo apt install -y gnome-shell-extension-manager 2>/dev/null || sudo apt install -y chrome-gnome-shell 2>/dev/null || true
+    elif command -v dnf &>/dev/null; then
+      sudo dnf install -y extension-manager 2>/dev/null || sudo dnf install -y gnome-shell-extensions 2>/dev/null || true
+    fi
     
     echo ""
     echo "    Para adicionar os APLICATIVOS ABERTOS na barra:"
@@ -65,8 +69,17 @@ else
         tar -xzf "$TMP_CURSOR/vision.tar.gz" -C "$CURSOR_DIR"
         rm -rf "$TMP_CURSOR"
         echo "    ✓ Cursor instalado!"
+        # Inherits com aspas no index.theme atrapalha alguns leitores de tema
+        for _vb in "$CURSOR_DIR/Vision-Black" "$CURSOR_DIR/Vision-black"; do
+            [[ -f "$_vb/index.theme" ]] && sed -i 's/^Inherits=.*/Inherits=hicolor/' "$_vb/index.theme" 2>/dev/null || true
+        done
     else
-        echo "    wget ou curl não encontrado. Instale: sudo apt install wget"
+        echo "    wget ou curl não encontrado. Instale:"
+        if command -v apt &>/dev/null; then
+            echo "      sudo apt install wget"
+        elif command -v dnf &>/dev/null; then
+            echo "      sudo dnf install wget"
+        fi
         echo "    Ou baixe manualmente: https://github.com/zDyant/Vision-Cursor/releases"
         echo "    Extraia Vision-Black para ~/.local/share/icons/"
         exit 1
@@ -76,16 +89,26 @@ fi
 # Aplicar cursor (nome pode ser Vision-Black ou Vision-black)
 CURSOR_NAME="Vision-Black"
 [ -d "$CURSOR_DIR/Vision-black" ] && CURSOR_NAME="Vision-black"
+mkdir -p "$HOME/.icons"
+ln -sfn "$CURSOR_DIR/$CURSOR_NAME" "$HOME/.icons/$CURSOR_NAME"
 gsettings set org.gnome.desktop.interface cursor-theme "$CURSOR_NAME"
 gsettings set org.gnome.desktop.interface cursor-size 24
+dconf write /org/gnome/desktop/interface/cursor-theme "'$CURSOR_NAME'" 2>/dev/null || true
+dconf write /org/gnome/desktop/interface/cursor-size "uint32 24" 2>/dev/null || true
+mkdir -p "$HOME/.config/environment.d"
+cat > "$HOME/.config/environment.d/90-dotfile-cursor.conf" <<EOF
+XCURSOR_THEME=$CURSOR_NAME
+XCURSOR_SIZE=24
+EOF
 echo "    ✓ Cursor Windows 11 Black aplicado!"
+echo "    (Logout/login para Electron/Cursor usarem o mesmo ponteiro.)"
 echo ""
 echo "    (Versão Twipeep do DeviantArt: baixe em"
 echo "     https://www.deviantart.com/twipeep/art/Windows-11-cursor-black-version-572437583"
 echo "     Extraia em ~/.local/share/icons/ e aplique nas configurações)"
 echo ""
 
-# --- 3. BOTÕES À DIREITA (PADRÃO WINDOWS / ZORIN) ---
+# --- 3. BOTÕES À DIREITA (PADRÃO WINDOWS) ---
 echo ">>> 3. Botões da janela à direita (minimizar, maximizar, fechar)"
 echo ""
 
@@ -97,15 +120,24 @@ done
 
 if [ -z "$WS_INSTALLED" ]; then
     echo "    Instalando WhiteSur (tema GTK)..."
-    TMP_DIR=$(mktemp -d)
-    cd "$TMP_DIR"
-    git clone --depth 1 https://github.com/vinceliuice/WhiteSur-gtk-theme.git
-    cd WhiteSur-gtk-theme
-    # -c Dark = variante escura; instala em /usr (precisa sudo)
-    ./install.sh -c Dark
-    cd "$SCRIPT_DIR/.."
-    rm -rf "$TMP_DIR"
-    echo "    ✓ WhiteSur instalado!"
+    if command -v git &>/dev/null; then
+        TMP_DIR=$(mktemp -d)
+        cd "$TMP_DIR"
+        git clone --depth 1 https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+        cd WhiteSur-gtk-theme
+        # -c Dark = variante escura; instala em /usr (precisa sudo)
+        ./install.sh -c Dark
+        cd "$SCRIPT_DIR/.."
+        rm -rf "$TMP_DIR"
+        echo "    ✓ WhiteSur instalado!"
+    else
+        echo "    ✗ git não encontrado. Instale com:"
+        if command -v apt &>/dev/null; then
+            echo "      sudo apt install git"
+        elif command -v dnf &>/dev/null; then
+            echo "      sudo dnf install git"
+        fi
+    fi
 else
     echo "    WhiteSur já instalado."
 fi
@@ -142,9 +174,9 @@ done
 
 if [ -z "$WS_ICONS" ]; then
     echo "    Instalando WhiteSur Icon Theme..."
-    TMP_DIR=$(mktemp -d)
-    cd "$TMP_DIR"
     if command -v git &>/dev/null; then
+        TMP_DIR=$(mktemp -d)
+        cd "$TMP_DIR"
         git clone --depth 1 https://github.com/vinceliuice/WhiteSur-icon-theme.git
         cd WhiteSur-icon-theme
         ./install.sh
@@ -152,9 +184,12 @@ if [ -z "$WS_ICONS" ]; then
         rm -rf "$TMP_DIR"
         echo "    ✓ Ícones instalados!"
     else
-        echo "    git não encontrado. Instale: sudo apt install git"
-        cd "$SCRIPT_DIR/.."
-        rm -rf "$TMP_DIR"
+        echo "    ✗ git não encontrado. Instale com:"
+        if command -v apt &>/dev/null; then
+            echo "      sudo apt install git"
+        elif command -v dnf &>/dev/null; then
+            echo "      sudo dnf install git"
+        fi
     fi
 else
     echo "    WhiteSur Icon Theme já instalado."
