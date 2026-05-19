@@ -1,0 +1,47 @@
+# Apps — Pop!_OS + COSMIC DE
+# Edite e rode: bash popos-cosmic/scripts/apps.sh instalar
+#
+# • === APT ===     → pacotes Debian/Ubuntu (Pop!_OS é baseado em Ubuntu)
+# • === FLATPAK === → recomendado para apps de terceiros no COSMIC
+#
+# Pacotes de terceiros (Chrome, Brave, Cursor, Warp, Docker…) exigem o repositório
+# ou .deb oficiais; falhas no instalar são esperadas até configurar a fonte.
+
+=== APT ===
+btop
+curl
+fastfetch
+flatpak
+gh
+git
+gnupg
+kitty
+nodejs
+npm
+openjdk-17-jdk
+python3-pip
+python3-venv
+sassc
+wget
+zsh
+# Docker (Ubuntu/Pop): https://docs.docker.com/engine/install/ubuntu/
+# containerd.io
+# docker-buildx-plugin
+# docker-ce
+# docker-ce-cli
+# docker-compose-plugin
+
+=== FLATPAK ===
+com.discordapp.Discord
+com.getpostman.Postman
+com.obsproject.Studio
+com.spotify.Client
+com.usebruno.Bruno
+com.visualstudio.code
+dev.zed.Zed
+io.dbeaver.DBeaverCommunity
+org.flameshot.Flameshot
+org.freecad.FreeCAD
+org.mozilla.firefox
+org.sqlitebrowser.sqlitebrowser
+org.videolan.VLC
