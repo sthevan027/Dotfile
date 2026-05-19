@@ -1,0 +1,93 @@
+# Apps — CachyOS + Hyprland
+# Edite e rode: bash cachyos-hyprland/scripts/apps.sh instalar
+#
+# • === PACMAN === → repositórios oficiais + AUR (via paru/yay)
+# • === FLATPAK === → apps de terceiros
+#
+# CachyOS já vem com paru instalado. Pacotes AUR são instalados automaticamente.
+
+=== PACMAN ===
+# --- Hyprland ecosystem ---
+hyprland
+hyprpaper
+hyprlock
+hypridle
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+waybar
+dunst
+rofi-wayland
+grimblast
+grim
+slurp
+wl-clipboard
+cliphist
+polkit-kde-agent
+
+# --- Terminal e shell ---
+kitty
+zsh
+git
+curl
+wget
+fastfetch
+jq
+
+# --- Áudio (Pipewire) ---
+pipewire
+pipewire-alsa
+pipewire-audio
+pipewire-jack
+pipewire-pulse
+wireplumber
+pavucontrol
+
+# --- GTK / Qt theming ---
+nwg-look
+qt5ct
+qt6ct
+kvantum
+qt5-wayland
+qt6-wayland
+
+# --- Fontes ---
+ttf-jetbrains-mono-nerd
+noto-fonts
+noto-fonts-emoji
+
+# --- Rede ---
+networkmanager
+network-manager-applet
+nm-connection-editor
+
+# --- Dev ---
+nodejs
+npm
+python
+python-pip
+
+# --- Utilitários ---
+btop
+flatpak
+brightnessctl
+playerctl
+upower
+nautilus
+
+# --- AUR ---
+# (paru instala automaticamente)
+# grimblast  ← já listado acima via paru
+
+=== FLATPAK ===
+com.discordapp.Discord
+com.getpostman.Postman
+com.obsproject.Studio
+com.spotify.Client
+com.usebruno.Bruno
+com.visualstudio.code
+dev.zed.Zed
+io.dbeaver.DBeaverCommunity
+org.flameshot.Flameshot
+org.mozilla.firefox
+org.sqlitebrowser.sqlitebrowser
+org.videolan.VLC
