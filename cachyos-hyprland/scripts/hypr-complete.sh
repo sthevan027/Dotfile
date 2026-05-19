@@ -150,6 +150,7 @@ link_config() {
 }
 
 link_config hypr
+link_config kitty
 link_config waybar
 link_config rofi
 link_config dunst

@@ -72,7 +72,7 @@ flatpak
 brightnessctl
 playerctl
 upower
-nautilus
+nemo
 
 # --- AUR ---
 # (paru instala automaticamente)
