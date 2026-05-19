@@ -1,0 +1,168 @@
+/* ============================================================
+   Waybar — WhiteSur-Dark theme (macOS dark aesthetic)
+   Paleta: #1c1c1e fundo | #6c6c70 ativo | #ffffff texto
+   ============================================================ */
+
+* {
+    font-family: "JetBrains Mono", "Noto Sans", sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(28, 28, 30, 0.90);
+    color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Workspaces ───────────────────────────────────────────── */
+#workspaces {
+    background: transparent;
+    padding: 2px 4px;
+}
+
+#workspaces button {
+    padding: 2px 10px;
+    color: #8e8e93;
+    background: transparent;
+    border-radius: 8px;
+    margin: 2px 2px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(108, 108, 112, 0.25);
+    color: #ffffff;
+}
+
+#workspaces button.active {
+    background: rgba(108, 108, 112, 0.45);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background: rgba(255, 69, 58, 0.4);
+    color: #ff453a;
+}
+
+/* ── Janela ativa ────────────────────────────────────────── */
+#window {
+    color: #8e8e93;
+    padding: 0 8px;
+    font-style: italic;
+}
+
+/* ── Módulos gerais ──────────────────────────────────────── */
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery,
+#tray,
+#custom-power {
+    padding: 2px 10px;
+    margin: 3px 2px;
+    border-radius: 8px;
+    background: rgba(44, 44, 46, 0.70);
+    color: #ffffff;
+    transition: background 0.2s ease;
+}
+
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#battery {
+    min-width: 44px;
+}
+
+#clock {
+    color: #ebebf0;
+    font-weight: 600;
+    background: rgba(58, 58, 60, 0.80);
+}
+
+/* ── CPU / Memória ───────────────────────────────────────── */
+#cpu {
+    color: #64d2ff;
+}
+
+#memory {
+    color: #30d158;
+}
+
+/* ── Rede ────────────────────────────────────────────────── */
+#network {
+    color: #0a84ff;
+}
+
+#network.disconnected {
+    color: #ff453a;
+    background: rgba(255, 69, 58, 0.15);
+}
+
+/* ── Volume ─────────────────────────────────────────────── */
+#pulseaudio {
+    color: #bf5af2;
+}
+
+#pulseaudio.muted {
+    color: #636366;
+    background: rgba(99, 99, 102, 0.20);
+}
+
+/* ── Bateria ─────────────────────────────────────────────── */
+#battery {
+    color: #30d158;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #ffd60a;
+}
+
+#battery.warning:not(.charging) {
+    color: #ff9f0a;
+    background: rgba(255, 159, 10, 0.15);
+}
+
+#battery.critical:not(.charging) {
+    color: #ff453a;
+    background: rgba(255, 69, 58, 0.20);
+    animation: blink 1s linear infinite alternate;
+}
+
+@keyframes blink {
+    to { background: rgba(255, 69, 58, 0.40); }
+}
+
+/* ── Bandeja ─────────────────────────────────────────────── */
+#tray {
+    padding: 2px 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: rgba(255, 159, 10, 0.20);
+}
+
+/* ── Power ───────────────────────────────────────────────── */
+#custom-power {
+    color: #ff453a;
+    font-size: 15px;
+    padding: 2px 12px;
+}
+
+#custom-power:hover {
+    background: rgba(255, 69, 58, 0.20);
+}

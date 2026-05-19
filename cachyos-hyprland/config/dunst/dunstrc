@@ -1,0 +1,65 @@
+# ============================================================
+#  Dunst — notificações (WhiteSur-Dark)
+# ============================================================
+
+[global]
+    monitor          = 0
+    follow           = mouse
+
+    width            = 320
+    height           = 120
+    offset           = 10x46
+    origin           = top-right
+    padding          = 12
+    horizontal_padding = 14
+    text_icon_padding = 10
+
+    frame_width      = 1
+    frame_color      = "#3d3d40"
+    corner_radius    = 10
+    gap_size         = 6
+
+    font             = JetBrains Mono 11
+    line_height      = 0
+    markup           = full
+    format           = "<b>%s</b>\n%b"
+    alignment        = left
+    vertical_alignment = center
+    word_wrap        = true
+    ellipsize        = middle
+    show_age_threshold = -1
+
+    icon_theme       = WhiteSur
+    enable_recursive_icon_lookup = true
+    icon_position    = left
+    min_icon_size    = 32
+    max_icon_size    = 48
+
+    sort             = yes
+    indicate_hidden  = yes
+    show_indicators  = no
+
+    mouse_left_click   = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click  = close_all
+
+    # Duração padrão (ms)
+    timeout          = 5000
+
+[urgency_low]
+    background       = "#1c1c1e"
+    foreground       = "#ebebf0"
+    frame_color      = "#3d3d40"
+    timeout          = 4000
+
+[urgency_normal]
+    background       = "#1c1c1e"
+    foreground       = "#ffffff"
+    frame_color      = "#3d3d40"
+    timeout          = 5000
+
+[urgency_critical]
+    background       = "#2c1c1e"
+    foreground       = "#ff453a"
+    frame_color      = "#ff453a"
+    timeout          = 0

@@ -1,0 +1,98 @@
+/* ============================================================
+   Rofi — WhiteSur-Dark theme
+   ============================================================ */
+
+configuration {
+    modi:            "drun,window,run";
+    show-icons:      true;
+    icon-theme:      "WhiteSur";
+    drun-display-format: "{name}";
+    display-drun:    " Apps";
+    display-window:  " Janelas";
+    display-run:     " Executar";
+    terminal:        "kitty";
+    font:            "JetBrains Mono 12";
+}
+
+* {
+    bg:          #1c1c1e;
+    bg-alt:      #2c2c2e;
+    fg:          #ffffff;
+    fg-dim:      #8e8e93;
+    accent:      #6c6c70;
+    selected:    rgba(108,108,112,0.45);
+    urgent:      #ff453a;
+    border-col:  rgba(255,255,255,0.08);
+}
+
+window {
+    transparency:    "real";
+    background-color: @bg;
+    text-color:      @fg;
+    border:          1px solid;
+    border-color:    @border-col;
+    border-radius:   14px;
+    width:           480px;
+    padding:         8px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+    spacing: 8px;
+    padding: 8px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius:   10px;
+    padding:         10px 14px;
+    spacing:         8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @fg-dim;
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg;
+    placeholder-color: @fg-dim;
+    placeholder:      "Pesquisar...";
+}
+
+listview {
+    background-color: transparent;
+    columns:          1;
+    lines:            8;
+    spacing:          2px;
+    scrollbar:        false;
+}
+
+element {
+    background-color: transparent;
+    text-color:       @fg;
+    border-radius:    8px;
+    padding:          8px 10px;
+    spacing:          10px;
+    orientation:      horizontal;
+}
+
+element normal.normal    { background-color: transparent; text-color: @fg; }
+element normal.urgent    { background-color: transparent; text-color: @urgent; }
+element selected.normal  { background-color: @selected;   text-color: @fg; }
+element selected.urgent  { background-color: @urgent;     text-color: @bg; }
+element alternate.normal { background-color: transparent; text-color: @fg; }
+
+element-icon {
+    size:             24px;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}
