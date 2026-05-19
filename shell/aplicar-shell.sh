@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Instala Oh My Zsh, Powerlevel10k, plugins e copia ~/.zshrc e ~/.p10k.zsh.
-# Uso: na raiz do repositório: ./scripts/aplicar-shell.sh
-# Requer: git, curl. Tenta instalar zsh (e opcionalmente jq, neofetch) via apt, brew, dnf ou pacman.
+# Funciona em qualquer distro Linux (Fedora, Pop!_OS, Ubuntu, Arch, etc.).
+# Uso: bash shell/aplicar-shell.sh
 
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -28,12 +28,11 @@ echo ""
 if ! have zsh; then
   echo ">>> zsh não encontrado; tentando instalar..."
   if have apt-get; then
-    sudo apt-get update -qq
-    sudo apt-get install -y zsh
-  elif have brew; then
-    brew install zsh
+    sudo apt-get update -qq && sudo apt-get install -y zsh
   elif have dnf; then
     sudo dnf install -y zsh
+  elif have brew; then
+    brew install zsh
   elif have pacman; then
     sudo pacman -Sy --needed --noconfirm zsh
   else
@@ -45,11 +44,11 @@ if ! have git || ! have curl; then
   echo ">>> Instalando git e curl..."
   if have apt-get; then
     sudo apt-get install -y git curl
+  elif have dnf; then
+    sudo dnf install -y git curl
   elif have brew; then
     have git || brew install git
     have curl || brew install curl
-  elif have dnf; then
-    sudo dnf install -y git curl
   elif have pacman; then
     sudo pacman -Sy --needed --noconfirm git curl
   else
@@ -57,16 +56,26 @@ if ! have git || ! have curl; then
   fi
 fi
 
-# Opcionais (neofetch/jq usados pelo .zshrc)
+# Opcionais: fastfetch (preferido) ou neofetch — usados pelo .zshrc
+install_fetch_tool() {
+  if have fastfetch || have neofetch; then return 0; fi
+  if have apt-get; then
+    sudo apt-get install -y fastfetch 2>/dev/null || sudo apt-get install -y neofetch 2>/dev/null || true
+  elif have dnf; then
+    sudo dnf install -y fastfetch 2>/dev/null || sudo dnf install -y neofetch 2>/dev/null || true
+  elif have brew; then
+    brew install fastfetch 2>/dev/null || brew install neofetch 2>/dev/null || true
+  fi
+}
+install_fetch_tool
+
+# jq (usado pelo .zshrc para ler package.json)
 if have apt-get; then
   ! have jq && sudo apt-get install -y jq 2>/dev/null || true
-  ! have neofetch && sudo apt-get install -y neofetch 2>/dev/null || true
 elif have dnf; then
   ! have jq && sudo dnf install -y jq 2>/dev/null || true
-  ! have neofetch && sudo dnf install -y neofetch 2>/dev/null || true
 elif have brew; then
   have jq || brew install jq 2>/dev/null || true
-  have neofetch || brew install neofetch 2>/dev/null || true
 fi
 
 clone_or_update() {
@@ -124,5 +133,5 @@ if [[ "$(basename "${SHELL:-}")" != "zsh" ]]; then
     echo ""
   fi
 fi
-echo "  Fonte recomendada para ícones do p10k: MesloLGS (veja README do powerlevel10k)."
+echo "  Fonte recomendada para ícones do p10k: MesloLGS NF (veja README do powerlevel10k)."
 echo ""

@@ -1,0 +1,49 @@
+# Apps — Fedora + GNOME
+# Edite e rode: bash fedora-gnome/scripts/apps.sh instalar
+#
+# • === DNF ===     → pacotes do repositório Fedora
+# • === FLATPAK === → qualquer distro com Flatpak (recomendado para apps de terceiros)
+#
+# Pacotes de terceiros (Chrome, Brave, Cursor, Warp, Docker…) exigem o repositório
+# ou .rpm oficiais; falhas no instalar são esperadas até configurar a fonte.
+
+=== DNF ===
+btop
+curl
+fastfetch
+feh
+flatpak
+gh
+git
+gnupg2
+java-17-openjdk-devel
+kitty
+NetworkManager-tui
+nodejs
+npm
+python3-pip
+rofi
+sassc
+wget
+zsh
+# Docker (Fedora): https://docs.docker.com/engine/install/fedora/
+# docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+podman-docker
+# google-chrome-stable  # após repo Google
+# brave-browser         # após repo Brave
+
+=== FLATPAK ===
+com.discordapp.Discord
+com.getpostman.Postman
+com.mattjakeman.ExtensionManager
+com.obsproject.Studio
+com.spotify.Client
+com.usebruno.Bruno
+com.visualstudio.code
+dev.zed.Zed
+io.dbeaver.DBeaverCommunity
+org.flameshot.Flameshot
+org.freecad.FreeCAD
+org.mozilla.firefox
+org.sqlitebrowser.sqlitebrowser
+org.videolan.VLC
