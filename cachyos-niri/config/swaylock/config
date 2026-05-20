@@ -1,0 +1,50 @@
+# swaylock — tela de bloqueio (WhiteSur-Dark)
+# Arquivo lido automaticamente pelo swaylock
+
+# Fundo sólido escuro
+color=1c1c1e
+
+# Fonte
+font=JetBrains Mono
+font-size=16
+
+# Indicador
+indicator-radius=80
+indicator-thickness=7
+indicator-caps-lock
+
+# Cores do anel
+ring-color=2c2c2e
+ring-clear-color=ffd60a
+ring-wrong-color=ff453a
+ring-ver-color=0a84ff
+
+# Interior do anel
+inside-color=1c1c1ebb
+inside-clear-color=1c1c1ebb
+inside-wrong-color=2c1c1ebb
+inside-ver-color=1c2c1ebb
+
+# Texto
+text-color=f2f2f7
+text-clear-color=f2f2f7
+text-wrong-color=ff453a
+text-ver-color=0a84ff
+text-caps-lock-color=ffd60a
+
+# Linhas invisíveis (limpas)
+line-color=00000000
+line-clear-color=00000000
+line-wrong-color=00000000
+line-ver-color=00000000
+
+# Separador invisível
+separator-color=00000000
+
+# Destaque das teclas
+key-hl-color=30d158ff
+bs-hl-color=ff453aff
+
+# Comportamento
+show-failed-attempts
+ignore-empty-password

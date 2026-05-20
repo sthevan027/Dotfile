@@ -1,0 +1,86 @@
+# Apps — CachyOS + Niri
+# Edite e rode: bash cachyos-niri/scripts/apps.sh instalar
+#
+# • === PACMAN === → repositórios oficiais + AUR (via paru/yay)
+# • === FLATPAK === → apps de terceiros
+
+=== PACMAN ===
+# --- Niri ecosystem ---
+niri
+swaylock
+swayidle
+swaybg
+xdg-desktop-portal-gnome
+xdg-desktop-portal-gtk
+waybar
+dunst
+rofi-wayland
+grim
+slurp
+wl-clipboard
+cliphist
+polkit-kde-agent
+
+# --- Terminal e shell ---
+kitty
+zsh
+git
+curl
+wget
+fastfetch
+jq
+
+# --- Áudio (Pipewire) ---
+pipewire
+pipewire-alsa
+pipewire-audio
+pipewire-jack
+pipewire-pulse
+wireplumber
+pavucontrol
+
+# --- GTK / Qt theming ---
+nwg-look
+qt5ct
+qt6ct
+kvantum
+qt5-wayland
+qt6-wayland
+
+# --- Fontes ---
+ttf-jetbrains-mono-nerd
+noto-fonts
+noto-fonts-emoji
+
+# --- Rede ---
+networkmanager
+network-manager-applet
+nm-connection-editor
+
+# --- Dev ---
+nodejs
+npm
+python
+python-pip
+
+# --- Utilitários ---
+btop
+flatpak
+brightnessctl
+playerctl
+upower
+nemo
+
+=== FLATPAK ===
+com.discordapp.Discord
+com.getpostman.Postman
+com.obsproject.Studio
+com.spotify.Client
+com.usebruno.Bruno
+com.visualstudio.code
+dev.zed.Zed
+io.dbeaver.DBeaverCommunity
+org.flameshot.Flameshot
+org.mozilla.firefox
+org.sqlitebrowser.sqlitebrowser
+org.videolan.VLC
